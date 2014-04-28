@@ -2,7 +2,7 @@ class FriendCirclesController < ApplicationController
   before_action :ensure_logged_in
 
   def index
-    @friend_circles = FriendCircle.where(owner_id: params[:user_id])
+    @friend_circles = FriendCircle.where(owner_id: current_user.id)
   end
 
   def show
@@ -11,13 +11,11 @@ class FriendCirclesController < ApplicationController
 
   def new
     @friend_circle = FriendCircle.new
-    # @users = User.where.not(id: params[:user_id])
   end
 
   def create
-    #change later to current user
     @friend_circle = FriendCircle.new(circle_params)
-    @friend_circle.owner_id = params[:user_id]
+    @friend_circle.owner_id = current_user.id
 
     if @friend_circle.save
       redirect_to friend_circle_url(@friend_circle)

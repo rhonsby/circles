@@ -1,0 +1,26 @@
+<h1>New Post</h1>
+
+<form action="<%= posts_url %>" method="POST">
+  <%= auth_tag %>
+
+  <label>Title
+    <input type="text" name="post[title]" value="<%= @post.title %>"><br>
+  </label>
+
+  <h3>Links</h3>
+  <% @post.links.each do |link| %>
+    <label>Name
+      <input type="text"
+        name="link[<%= link.object_id %>][name]"
+        value="<%= link.name %>">
+    </label>
+
+    <label>URL
+      <input type="text"
+        name="link[<%= link.object_id %>][url]"
+        value="<%= link.url %>">
+    </label><br>
+  <% end %>
+
+  <input type="submit" value="Submit Post">
+</form>

@@ -1,6 +1,6 @@
 <h1>Make New Friend Circle</h1>
 
-<form action="<%= user_friend_circles_url(params[:user_id]) %>" method="POST">
+<form action="<%= friend_circles_url %>" method="POST">
   <%= auth_tag %>
 
   <label>Circle Name
@@ -9,7 +9,7 @@
   </label>
 
   <h3>Friends</h3>
-  <% User.where.not(id: params[:user_id]).each do |user| %>
+  <% User.where.not(id: current_user.id).each do |user| %>
     <label>
       <input
       type="checkbox"

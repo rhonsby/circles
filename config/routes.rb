@@ -1,9 +1,12 @@
 Circles::Application.routes.draw do
   resources :users do
-    resources :friend_circles, only: [:index, :new, :create]
+    resources :friend_circles, only: [:index]
   end
 
-  resources :friend_circles, only: [:show, :destroy]
+  # temp posts/show -> feed
+  resources :posts, only: [:show, :new, :create]
+
+  resources :friend_circles, only: [:show, :destroy, :new, :create]
 
   resource :session, only: [:new, :create, :destroy]
 end
