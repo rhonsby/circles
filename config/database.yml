@@ -1,0 +1,9 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: Circles_development
+  pool: 5
+  username: appacademy
+  password:
+  host: localhost
