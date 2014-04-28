@@ -1,0 +1,23 @@
+<h1>Make New Friend Circle</h1>
+
+<form action="<%= user_friend_circles_url(params[:user_id]) %>" method="POST">
+  <%= auth_tag %>
+
+  <label>Circle Name
+    <input type="text" name="friend_circle[name]"
+      value="<%= @friend_circle.name%>"><br>
+  </label>
+
+  <h3>Friends</h3>
+  <% User.where.not(id: params[:user_id]).each do |user| %>
+    <label>
+      <input
+      type="checkbox"
+      name="friend_circle[member_ids][]"
+      value="<%= user.id %>">
+      <%= user.email %>
+    </label><br>
+  <% end %>
+
+  <input type="submit" value="Make Circle">
+</form>
