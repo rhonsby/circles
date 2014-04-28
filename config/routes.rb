@@ -6,7 +6,7 @@ Circles::Application.routes.draw do
   # temp posts/show -> feed
   resources :posts, only: [:show, :new, :create]
 
-  resources :friend_circles, only: [:show, :destroy, :new, :create]
+  resources :friend_circles, except: [:index]
 
   resource :session, only: [:new, :create, :destroy]
 end

@@ -22,5 +22,17 @@
     </label><br>
   <% end %>
 
+  <h3>Friend Circles</h3>
+  <% current_user.friend_circles.each do |circle| %>
+    <label>
+      <input type="checkbox"
+        name="post[friend_circle_ids][]"
+        value=<%= circle.id %>>
+      <%= circle.name %>
+    </label><br>
+  <% end %>
+
+  <br>
+
   <input type="submit" value="Submit Post">
 </form>

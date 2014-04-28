@@ -17,6 +17,10 @@ module ApplicationHelper
             value='#{form_authenticity_token}' >".html_safe
   end
 
+  def edit_tag
+    "<input type='hidden' name='_method' value='PATCH'>".html_safe
+  end
+
   def ensure_logged_in
     redirect_to new_session_url unless logged_in?
   end

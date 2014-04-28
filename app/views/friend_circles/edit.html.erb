@@ -1,0 +1,4 @@
+<h1>Edit Friend Circle: <%= @friend_circle.name %></h1>
+
+<%= render 'form', edit: true,
+    action_url: friend_circle_url(@friend_circle), msg: 'Edit Circle' %>

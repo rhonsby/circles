@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_url(@post)
     else
+      (5 - @post.links.length).times { @post.links.build }
       flash.now[:errors] = @post.errors.full_messages
       render :new
     end
@@ -23,7 +24,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title)
+    params.require(:post).permit(:title, friend_circle_ids: [])
   end
 
   def link_params

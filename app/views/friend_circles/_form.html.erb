@@ -1,0 +1,25 @@
+<form action="<%= action_url %>" method="POST">
+  <%= auth_tag %>
+  <%= edit_tag if edit %>
+
+  <label>Circle Name
+    <input type="text" name="friend_circle[name]"
+      value="<%= @friend_circle.name%>"><br>
+  </label>
+
+  <h3>Friends</h3>
+  <input type="hidden"
+    name="friend_circle[member_ids][]" value="">
+  <% User.where.not(id: current_user.id).each do |user| %>
+    <label>
+      <input
+      type="checkbox"
+      name="friend_circle[member_ids][]"
+      value="<%= user.id %>"
+      <%= "checked".html_safe if @friend_circle.member_ids.include?(user.id) %>>
+      <%= user.email %>
+    </label><br>
+  <% end %>
+
+  <input type="submit" value="<%= msg %>">
+</form>
