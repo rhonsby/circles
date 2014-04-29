@@ -2,6 +2,13 @@
 
 <ul>
   <% @friend_circles.each do |circle| %>
-    <li><%= link_to circle.name, friend_circle_url(circle) %></li>
+    <li>
+      <%= link_to circle.name, friend_circle_url(circle) %>
+      <%= link_to 'Edit', edit_friend_circle_url(circle) %>
+      <%= button_to 'Delete', friend_circle_url(circle), method: :delete %>
+    </li>
   <% end %>
 </ul>
+
+<br>
+<%= link_to 'Create Circle of Friends', new_friend_circle_url %>

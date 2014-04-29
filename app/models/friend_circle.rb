@@ -6,8 +6,8 @@ class FriendCircle < ActiveRecord::Base
 
   belongs_to :owner, class_name: 'User'
 
-  has_many :circle_memberships, inverse_of: :friend_circle
+  has_many :circle_memberships, inverse_of: :friend_circle, dependent: :destroy
   has_many :members, through: :circle_memberships, source: :friend
-  has_many :post_shares
+  has_many :post_shares, dependent: :destroy
   has_many :posts, through: :post_shares
 end

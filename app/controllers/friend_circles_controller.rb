@@ -40,6 +40,11 @@ class FriendCirclesController < ApplicationController
     end
   end
 
+  def destroy
+    FriendCircle.find(params[:id]).destroy
+    redirect_to friend_circles_url
+  end
+
   private
 
   def circle_params

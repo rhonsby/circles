@@ -2,9 +2,9 @@ class Post < ActiveRecord::Base
   validates :title, :author, :links, presence: true
 
   belongs_to :author, class_name: 'User'
-  has_many :links, inverse_of: :post
+  has_many :links, inverse_of: :post, dependent: :destroy
 
-  has_many :post_shares, inverse_of: :post
+  has_many :post_shares, inverse_of: :post, dependent: :destroy
   has_many :friend_circles, through: :post_shares
 
   def self.shared_with_user(user)
