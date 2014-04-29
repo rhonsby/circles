@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   def feed
-    @posts = Post.shared_with_user(current_user)
+    @posts = Post.shared_with_user(current_user).concat(current_user.posts)
   end
 
   private

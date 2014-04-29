@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  validates :title, :author, :friend_circles, :links, presence: true
+  validates :title, :author, :links, presence: true
 
   belongs_to :author, class_name: 'User'
   has_many :links, inverse_of: :post

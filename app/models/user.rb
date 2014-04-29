@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :circle_memberships, foreign_key: :friend_id
   has_many :circles, through: :circle_memberships, source: :friend_circle
 
-  has_many :posts, foreign_key: :author_id
+  has_many :posts, foreign_key: :author_id, inverse_of: :author
 
   attr_reader :password
 
