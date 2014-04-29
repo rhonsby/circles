@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token
 
   has_many :friend_circles, foreign_key: :owner_id
+  has_many :friends, through: :friend_circles, source: :members
 
-  has_many :circle_memberships
-  has_many :friends, through: :circle_memberships, source: :friend
+  has_many :circle_memberships, foreign_key: :friend_id
+  has_many :circles, through: :circle_memberships, source: :friend_circle
 
   has_many :posts, foreign_key: :author_id
 

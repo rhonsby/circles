@@ -1,4 +1,6 @@
 Circles::Application.routes.draw do
+  root to: 'posts#feed'
+
   resources :users do
     resources :friend_circles, only: [:index]
   end
@@ -9,4 +11,6 @@ Circles::Application.routes.draw do
   resources :friend_circles, except: [:index]
 
   resource :session, only: [:new, :create, :destroy]
+
+  get '/feed', to: 'posts#feed'
 end

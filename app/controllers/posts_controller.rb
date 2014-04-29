@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :ensure_logged_in
+
   def new
     @post = Post.new
     5.times { @post.links.build }
@@ -19,6 +21,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def feed
+    @posts = Post.shared_with_user(current_user)
   end
 
   private
