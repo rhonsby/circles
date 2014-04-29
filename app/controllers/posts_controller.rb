@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, friend_circle_ids: [])
+    params.require(:post).permit(:title, :body, friend_circle_ids: [])
   end
 
   def link_params

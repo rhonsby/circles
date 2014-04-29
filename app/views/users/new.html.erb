@@ -18,15 +18,20 @@
     <input type="text" name="post[title]" value="<%= @post.title %>"><br>
   </label>
 
+  <label>Description<br>
+    <textarea name="post[body]"></textarea>
+  </label><br>
+
   <% @post.links.each do |link| %>
     <label>Name
       <input type="text" name="link[<%= link.object_id %>][name]">
-    </label>
+    </label><br>
 
 
     <label>URL
       <input type="text" name="link[<%= link.object_id %>][url]">
     </label><br>
+    <br>
 
   <% end %>
 

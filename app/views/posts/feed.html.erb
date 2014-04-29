@@ -1,7 +1,14 @@
 <h1>Feed</h1>
 
+<%= link_to 'New Post', new_post_url %>
+
 <ul>
   <% @posts.each do |post| %>
-    <li><%= link_to post.title, post_url(post) %></li>
+    <li>
+      <%= link_to post.title, post_url(post) %>
+      <% unless post.body.nil? %>
+        <ul><li><%= post.body %></li></ul>
+      <% end %>
+    </li>
   <% end %>
 </ul>

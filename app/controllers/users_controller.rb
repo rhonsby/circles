@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to root_url
     else
+      (5 - @post.links.length).times { @post.links.build }
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end
